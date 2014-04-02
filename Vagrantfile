@@ -8,4 +8,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise64"
   config.vm.network :forwarded_port, guest: 80, host: 8082
   config.vm.provision "shell", path: "provision.sh"
+
+  config.vm.provider "virtualbox" do |v|
+    v.customize ["modifyvm", :id, "--memory", "2048"]
+  end
 end
